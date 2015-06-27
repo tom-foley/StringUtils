@@ -1,4 +1,4 @@
-data-utils
+StringUtils
 ==========
 
-data-utils contains a collection of random string generators written in various languages.
+StringUtils contains a collection of string utility classes written in various languages.
