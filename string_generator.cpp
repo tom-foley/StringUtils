@@ -1,6 +1,7 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+using namespace std;
 
 #define MAX_CHARS 26
 
@@ -18,7 +19,7 @@ void fill_remaining_array(char (*char_array)[26], unsigned short length) {
 }
 
 char * generate_random(char arrays[3][26], unsigned short lengths[3], unsigned short length) {
-	char *rand_string = malloc(length);
+	char *rand_string = (char*)malloc(length);
 	unsigned short i, j, rand_arr, rand_char;
 	for (i = 0; i < length; i++) {
 		rand_arr = rand() % 3;
@@ -28,7 +29,7 @@ char * generate_random(char arrays[3][26], unsigned short lengths[3], unsigned s
 	return rand_string;
 }
 
-void main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 	/*	Local Variables	*/
 	srand(time(NULL));
 	char arrays[3][26];
@@ -37,6 +38,7 @@ void main(int argc, char *argv[]) {
 	unsigned short lengths[3] = {10, 26, 26};
 	char start_bytes[3] = {0x30, 0x61, 0x41};
 
+	/*	Command Line Args */
 	if (argc == 2) {
 		str_len = atoi(argv[1]);
 		num_str = 1;
@@ -60,7 +62,8 @@ void main(int argc, char *argv[]) {
 	char *rand_str;
 	for (i = 0; i < num_str; i++) {
 		rand_str = generate_random(arrays, lengths, str_len);
-		printf("%s\n\n", rand_str);
+		printf("%s\n", rand_str);
 		free(rand_str);
 	}
+	return 0;
 }
